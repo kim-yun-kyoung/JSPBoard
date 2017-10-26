@@ -24,7 +24,9 @@ public class MemberServlet extends HttpServlet{
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String task = request.getParameter("task");
 		String path = "";
+		
 		System.out.println("doGet task : "+task);
+		
 		if(task.equals("joinForm")) {
 			path = "join_form.jsp";
 		}else if(task.equals("loginForm")) {
@@ -39,7 +41,9 @@ public class MemberServlet extends HttpServlet{
 		request.setCharacterEncoding("euc-kr");
 		String task = request.getParameter("task");
 		String path = "";
+		
 		System.out.println("doPost task : "+task);
+		
 		if(task.equals("join")) {
 			Member member = new Member();
 			member.setId(request.getParameter("id"));
@@ -67,6 +71,7 @@ public class MemberServlet extends HttpServlet{
 			}else {
 				path = "login_fail.jsp";
 			}
+			
 		}else if(task.equals("searchId")) {	
 			String resultId = service.duplicateCheckId(request.getParameter("checkId"));
 			System.out.println("servlet searchId id = "+resultId);
